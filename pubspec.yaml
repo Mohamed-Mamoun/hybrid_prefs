@@ -1,0 +1,29 @@
+name: hybrid_prefs
+description: >-
+  Type-safe SharedPreferences with synchronous reads, where secure keys
+  (tokens, secrets) live in the Keychain/Keystore and are migrated out of
+  plaintext automatically.
+version: 1.0.0
+repository: https://github.com/Mohamed-Mamoun/hybrid_prefs
+issue_tracker: https://github.com/Mohamed-Mamoun/hybrid_prefs/issues
+topics:
+  - storage
+  - security
+  - shared-preferences
+  - secure-storage
+  - persistence
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_secure_storage: ">=9.2.0 <12.0.0"
+  shared_preferences: ^2.2.0
+
+dev_dependencies:
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter

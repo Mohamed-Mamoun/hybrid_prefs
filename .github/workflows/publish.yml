@@ -1,0 +1,26 @@
+# Publishes to pub.dev when a version tag is pushed, e.g. `git tag v1.0.0`.
+# One-time setup: publish the first version by hand, then enable "Automated
+# publishing" from GitHub Actions on the package's pub.dev admin page, with
+# tag pattern `v{{version}}` and environment `pub.dev`.
+name: Publish to pub.dev
+
+on:
+  push:
+    tags: ['v[0-9]+.[0-9]+.[0-9]+*']
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pub.dev
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter pub publish --force
